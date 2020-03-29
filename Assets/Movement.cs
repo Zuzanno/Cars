@@ -7,7 +7,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private CharacterController _charController;
-    public float speed = 3.0f;
+    public float speed = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +17,15 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float deltaX = Input.GetAxis("Horizontal") * speed;
-        float deltaZ = Input.GetAxis("Vertical") * speed;
-        Vector3 movement = new Vector3(deltaX, 0, deltaZ);
-        movement = Vector3.ClampMagnitude(movement, speed);
-        movement *= Time.deltaTime;
-        movement = transform.TransformDirection(movement);
-        _charController.Move(movement);
+        
+            float deltaZ = Input.GetAxis("Vertical") * speed;
+            Vector3 movement = new Vector3(0, 0, deltaZ);
+            movement = Vector3.ClampMagnitude(movement, speed);
+            movement *= Time.deltaTime;
+            movement = transform.TransformDirection(movement);
+            _charController.Move(movement);
 
     }
+
 }
+
